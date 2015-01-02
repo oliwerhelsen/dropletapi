@@ -46,19 +46,38 @@ function makeRequest(fn, uri, options, callback) {
  * Api documentation: https://developers.digitalocean.com/v2/#create-a-new-droplet
  */
 
-DO.prototype.createDroplet = function(name, region, size, image, ssh_keys = null, backups = false, ipv6 = true, private_networking = null, user_data = null) {
+DO.prototype.createDroplet = function(name, region, size, image, ssh_keys, backups, ipv6, private_networking, user_data) {
 	var querydata = this.createQuery();
+
+	if(ssh_keys !== null) {
+		querydata.ssh_keys = ssh_keys;
+	}
+
+	if(backups !== null {
+		querydata.backups = backups;
+	}
+
+	if(ipv6 !== null) {
+		querydata.ipv6 = ipv6;
+	}
+
+	if(private_networking !== null) {
+		querydata.private_networking = private_networking;
+	}
+
+	if(user_data !== null) {
+		querydata.user_data = user_data;
+	}
+
+
+
 	querydata = {
 		name				: 	name,
 		region				: 	region,
 		size				: 	size,
-		image				: 	image,
-		ssh_keys			: 	ssh_keys,
-		backups				: 	backups,
-		ipv6				: 	ipv6,
-		private_networking 	: 	private_networking,
-		user_data			: 	user_data
+		image				: 	image
 	}
 
 	makeRequest(rest.post, this.baseUri + 'droplets', {query: querydata}, callback);
 };
+

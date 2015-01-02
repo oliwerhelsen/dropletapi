@@ -22,10 +22,10 @@ Features
 
 * Create new Droplet
 * Retrieve an existing Droplet by id
+* List all Droplets in your account
 
 API
 ---
-
 
 ### createDroplet(name, region, size, image, ssh_keys, backups, ipv6, private_networking, user_data, callback)
 
@@ -63,6 +63,29 @@ var DIGITALOCEAN = require('dropletapi');
 var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
 
 digitalocean.getDropletById(PUT THE ID HERE, function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+
+### listDroplets(callback) 
+
+List all Droplets in your account
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi');
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+digitalocean.listDroplets(function (error, result) {
           if (error) {
               console.log(error);
           }

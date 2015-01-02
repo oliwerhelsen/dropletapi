@@ -53,7 +53,7 @@ DO.prototype.createDroplet = function(name, region, size, image, ssh_keys, backu
 		querydata.ssh_keys = ssh_keys;
 	}
 
-	if(backups !== null {
+	if(backups !== null) {
 		querydata.backups = backups;
 	}
 

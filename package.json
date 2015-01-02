@@ -16,6 +16,9 @@
     "API",
     "V2"
   ],
+  "dependencies": {
+    "restler": "2.0.*"
+  },
   "author": "Oliwer Helsén",
   "license": "ISC",
   "bugs": {

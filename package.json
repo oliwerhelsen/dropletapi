@@ -1,5 +1,5 @@
 {
-  "name": "DropletApi",
+  "name": "dropletapi",
   "version": "0.0.1",
   "description": "Wrapper for the DigitalOcean API V2",
   "main": "index.js",

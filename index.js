@@ -93,6 +93,10 @@ DO.prototype.getDropletById = function(dropletID, callback) {
 	makeRequest(rest.get, this.baseUri + 'droplets/' + dropletID, {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
 };
 
+DO.prototype.listDroplets = function(first_argument) {
+	// body...
+};
+
 
 
 

@@ -21,6 +21,7 @@ Features
 --------
 
 * Create new Droplet
+* Retrieve an existing Droplet by id
 
 API
 ---

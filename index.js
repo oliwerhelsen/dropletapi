@@ -14,7 +14,7 @@ var DO = function(token) {
 };
 
 DO.prototype.createQuery = function() {
-	return {token: this.token};
+	return {};
 };
 
 function makeRequest(fn, uri, options, callback) {
@@ -69,8 +69,6 @@ DO.prototype.createDroplet = function(name, region, size, image, ssh_keys, backu
 		querydata.user_data = user_data;
 	}
 
-
-
 	querydata = {
 		name				: 	name,
 		region				: 	region,
@@ -78,7 +76,7 @@ DO.prototype.createDroplet = function(name, region, size, image, ssh_keys, backu
 		image				: 	image
 	}
 
-	makeRequest(rest.post, this.baseUri + 'droplets', {query: querydata}, callback);
+	makeRequest(rest.post, this.baseUri + 'droplets', {data: querydata, headers: {Content-Type: application/json, Authorization: 'Bearer ' + this.token} }, callback);
 };
 
 module.exports = DO;

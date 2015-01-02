@@ -1,0 +1,25 @@
+{
+  "name": "DropletApi",
+  "version": "0.0.1",
+  "description": "Wrapper for the DigitalOcean API V2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oliwerhelsen/DigitalOcean-API-v2"
+  },
+  "keywords": [
+    "Digital",
+    "Ocean",
+    "API",
+    "V2"
+  ],
+  "author": "Oliwer Helsén",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oliwerhelsen/DigitalOcean-API-v2/issues"
+  },
+  "homepage": "https://github.com/oliwerhelsen/DigitalOcean-API-v2"
+}

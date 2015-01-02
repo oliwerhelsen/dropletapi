@@ -93,8 +93,16 @@ DO.prototype.getDropletById = function(dropletID, callback) {
 	makeRequest(rest.get, this.baseUri + 'droplets/' + dropletID, {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
 };
 
-DO.prototype.listDroplets = function(first_argument) {
-	// body...
+/**
+ * List all Droplets in your account
+ *
+ * @The response body will be a JSON object with a key of droplets. This will be set to an array containing objects representing each Droplet.
+ * 
+ * Api documentation: https://developers.digitalocean.com/v2/#list-all-droplets
+ */
+
+DO.prototype.listDroplets = function(callback) {
+	makeRequest(rest.get, this.baseUri + 'droplets', {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
 };
 
 

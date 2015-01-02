@@ -76,7 +76,7 @@ DO.prototype.createDroplet = function(name, region, size, image, ssh_keys, backu
 		image				: 	image
 	}
 
-	makeRequest(rest.post, this.baseUri + 'droplets', {data: querydata, headers: {Content-Type: application/json, Authorization: 'Bearer ' + this.token} }, callback);
+	makeRequest(rest.post, this.baseUri + 'droplets', {data: querydata, headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token} }, callback);
 };
 
 module.exports = DO;

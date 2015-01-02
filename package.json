@@ -1,6 +1,6 @@
 {
   "name": "dropletapi",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Wrapper for the DigitalOcean API V2",
   "main": "index.js",
   "scripts": {

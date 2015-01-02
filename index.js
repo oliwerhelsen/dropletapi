@@ -81,3 +81,4 @@ DO.prototype.createDroplet = function(name, region, size, image, ssh_keys, backu
 	makeRequest(rest.post, this.baseUri + 'droplets', {query: querydata}, callback);
 };
 
+module.exports = DO;

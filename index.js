@@ -76,7 +76,24 @@ DO.prototype.createDroplet = function(name, region, size, image, ssh_keys, backu
 		image				: 	image
 	}
 
-	makeRequest(rest.post, this.baseUri + 'droplets', {data: querydata, headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token} }, callback);
+	makeRequest(rest.post, this.baseUri + 'droplets', {data: querydata, headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
 };
+
+/**
+ * Retrieve an existing Droplet by id
+ *
+ * @param id {number} [Required]
+ *
+ * @The response will be a JSON object with a key called droplet. This will be set to a JSON object that contains the Droplet's attributes:
+ * 
+ * Api documentation: https://developers.digitalocean.com/v2/#retrieve-an-existing-droplet-by-id
+ */
+
+DO.prototype.getDropletById = function(dropletID) {
+	makeRequest(rest.get, this.baseUri + 'droplets/' + dropletID, {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
+};
+
+
+
 
 module.exports = DO;

@@ -46,7 +46,7 @@ function makeRequest(fn, uri, options, callback) {
  * Api documentation: https://developers.digitalocean.com/v2/#create-a-new-droplet
  */
 
-DO.prototype.createDroplet = function(name, region, size, image, ssh_keys, backups, ipv6, private_networking, user_data) {
+DO.prototype.createDroplet = function(name, region, size, image, ssh_keys, backups, ipv6, private_networking, user_data, callback) {
 	var querydata = this.createQuery();
 
 	if(ssh_keys !== null) {

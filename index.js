@@ -89,7 +89,7 @@ DO.prototype.createDroplet = function(name, region, size, image, ssh_keys, backu
  * Api documentation: https://developers.digitalocean.com/v2/#retrieve-an-existing-droplet-by-id
  */
 
-DO.prototype.getDropletById = function(dropletID) {
+DO.prototype.getDropletById = function(dropletID, callback) {
 	makeRequest(rest.get, this.baseUri + 'droplets/' + dropletID, {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
 };
 

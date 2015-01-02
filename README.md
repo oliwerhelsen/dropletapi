@@ -49,6 +49,29 @@ digitalocean.createDroplet('testingAPI', 'nyc3', '512mb', 'ubuntu-14-04-x64', nu
 
 ```
 
+### getDropletById(dropletID, callback)
+
+Retrieve an existing Droplet by id
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi');
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+digitalocean.getDropletById(PUT THE ID HERE, function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+
 TODO
 ----
-* Add more actions from the DigitalOcean API v2
+* Keep on adding more actions from the DigitalOcean API v2

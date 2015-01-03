@@ -105,4 +105,17 @@ DO.prototype.listDroplets = function(callback) {
 	makeRequest(rest.get, this.baseUri + 'droplets', {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
 };
 
+/**
+* Delete a Droplet
+*
+* @No response body will be sent back, but the response code will indicate success.
+* Specifically, the response code will be a 204, which means that the action was successful with no returned body data.
+*
+* Api documentation: https://developers.digitalocean.com/#delete-a-droplet
+*/
+
+DO.prototype.deleteDroplet = function(dropletID, callback) {
+	makeRequest(rest.delete, this.baseUri + 'droplets/' + dropletID, {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
+};
+
 module.exports = DO;

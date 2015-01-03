@@ -217,8 +217,6 @@ digitalocean.getActionsForDroplet(PUT THE DROPLETID HERE, function (error, resul
 
 ```
 
-```
-
 ### listDropletUpgrades(callback)
 
 Retrieve a list of droplets that are scheduled to be upgraded

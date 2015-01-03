@@ -23,6 +23,7 @@ Features
 * Create new Droplet
 * Retrieve an existing Droplet by id
 * List all Droplets in your account
+* Delete a Droplet by id
 
 API
 ---
@@ -62,7 +63,7 @@ var DIGITALOCEAN = require('dropletapi');
 
 var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
 
-digitalocean.getDropletById(PUT THE ID HERE, function (error, result) {
+digitalocean.getDropletById(PUT THE DROPLETID HERE, function (error, result) {
           if (error) {
               console.log(error);
           }
@@ -86,6 +87,29 @@ var DIGITALOCEAN = require('dropletapi');
 var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
 
 digitalocean.listDroplets(function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+
+### deleteDroplet(dropletID, callback)
+
+Delete a Droplet by id
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi');
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+digitalocean.deleteDroplet(3649PUT THE DROPLETID HERE675, function (error, result) {
           if (error) {
               console.log(error);
           }

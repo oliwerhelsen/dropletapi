@@ -20,10 +20,15 @@ npm install dropletapi --save
 Features
 --------
 
+-- DROPLETS
 * Create new Droplet
 * Retrieve an existing Droplet by id
 * List all Droplets in your account
 * Delete a Droplet by id
+* Retrieve a list of all kernels available to a Dropet
+* Retrieve snapshots for a Droplet
+* Retrieve backups for a Droplet
+* Retrieve actions for a Droplet
 
 API
 ---
@@ -109,7 +114,124 @@ var DIGITALOCEAN = require('dropletapi');
 
 var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
 
-digitalocean.deleteDroplet(3649PUT THE DROPLETID HERE675, function (error, result) {
+digitalocean.deleteDroplet(PUT THE DROPLETID HERE, function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+
+### availableKernelsForDroplet(dropletID, callback)
+
+Retrieve a list of all kernels available to a Dropet
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi');
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+digitalocean.availableKernelsForDroplet(PUT THE DROPLETID HERE, function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+
+### getSnapshotsForDroplet(dropletID, callback)
+
+Retrieve the snapshots that have been created from a Droplet
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi');
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+digitalocean.getSnapshotsForDroplet(PUT THE DROPLETID HERE, function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+
+### getBackupsForDroplet(dropletID, callback)
+
+Retrieve any backups associated with a Droplet
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi');
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+digitalocean.getBackupsForDroplet(PUT THE DROPLETID HERE, function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+
+### getActionsForDroplet(dropletID, callback)
+
+Retrieve all actions that have been executed on a Droplet
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi');
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+digitalocean.getActionsForDroplet(PUT THE DROPLETID HERE, function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+
+```
+
+### listDropletUpgrades(callback)
+
+Retrieve a list of droplets that are scheduled to be upgraded
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi');
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+digitalocean.listDropletUpgrades(function (error, result) {
           if (error) {
               console.log(error);
           }

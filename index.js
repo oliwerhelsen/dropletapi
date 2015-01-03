@@ -118,4 +118,85 @@ DO.prototype.deleteDroplet = function(dropletID, callback) {
 	makeRequest(rest.del, this.baseUri + 'droplets/' + dropletID, {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
 };
 
+/*
+	List all available Kernels for a Droplet
+	
+	Retrieve a list of all kernels available to a Dropet
+
+	@param id {number} [Required]
+
+	@ The response will be a JSON object that has a key called kernels.
+	  This will be set to an array of kernel objects, each of which contain the standard kernel attributes
+
+	API documentation: https://developers.digitalocean.com/#list-all-available-kernels-for-a-droplet
+*/
+DO.prototype.availableKernelsForDroplet = function(dropletID, callback) {
+	makeRequest(rest.get, this.baseUri + 'droplets/' + dropletID + '/kernels', {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
+};
+
+/*
+	Retrieve snapshots for a Droplet
+	
+	Retrieve the snapshots that have been created from a Droplet
+
+	@param id {number} [Required]
+
+	@ You will get back a JSON object that has a snapshots key. 
+	  This will be set to an array of snapshot objects, each of which contain the standard image attributes
+
+	API documentation: https://developers.digitalocean.com/#retrieve-snapshots-for-a-droplet
+*/
+
+DO.prototype.getSnapshotsForDroplet = function(dropletID, callback) {
+	makeRequest(rest.get, this.baseUri + 'droplets/' + dropletID + '/snapshots', {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
+};
+
+/*	
+	Retrieve backups for a Droplet
+
+	Retrieve any backups associated with a Droplet
+
+	@param id {number} [Required]
+
+	@ You will get back a JSON object that has a backups key.
+	  This will be set to an array of backup objects, each of which contain the standard image attributes
+
+	API documentation: https://developers.digitalocean.com/#retrieve-backups-for-a-droplet
+*/
+
+DO.prototype.getBackupsForDroplet = function(dropletID, callback) {
+	makeRequest(rest.get, this.baseUri + 'droplets/' + dropletID + '/backups', {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
+};
+
+/*	
+	Retrieve actions for a Droplet
+
+	Retrieve all actions that have been executed on a Droplet
+
+	@param id {number} [Required]
+
+	@ The results will be returned as a JSON object with an actions key.
+	  This will be set to an array filled with action objects containing the standard action attributes
+
+	API documentation: https://developers.digitalocean.com/#retrieve-actions-for-a-droplet
+*/
+
+DO.prototype.getActionsForDroplet = function(dropletID, callback) {
+	makeRequest(rest.get, this.baseUri + 'droplets/' + dropletID + '/actions', {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
+};
+
+/*	
+	List Droplet Upgrades
+
+	Retrieve a list of droplets that are scheduled to be upgraded
+
+	@ The results will be returned as a JSON array containing details about the schedule and droplet id
+
+	API documentation: https://developers.digitalocean.com/#retrieve-actions-for-a-droplet
+*/
+
+DO.prototype.listDropletUpgrades = function(callback) {
+	makeRequest(rest.get, this.baseUri + 'droplet_upgrades', {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
+};
+
 module.exports = DO;

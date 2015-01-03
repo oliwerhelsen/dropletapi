@@ -115,7 +115,7 @@ DO.prototype.listDroplets = function(callback) {
 */
 
 DO.prototype.deleteDroplet = function(dropletID, callback) {
-	makeRequest(rest.delete, this.baseUri + 'droplets/' + dropletID, {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
+	makeRequest(rest.del, this.baseUri + 'droplets/' + dropletID, {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
 };
 
 module.exports = DO;

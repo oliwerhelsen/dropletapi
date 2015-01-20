@@ -42,41 +42,12 @@ function makeRequest(fn, uri, options, callback) {
  * @param user_data {String} [Optional]
  *
  * @response Object containing the standard attributes for your new Droplet
- * 
+ *
  * Api documentation: https://developers.digitalocean.com/v2/#create-a-new-droplet
  */
 
-DO.prototype.createDroplet = function(name, region, size, image, ssh_keys, backups, ipv6, private_networking, user_data, callback) {
-	var querydata = this.createQuery();
-
-	if(ssh_keys !== null) {
-		querydata.ssh_keys = ssh_keys;
-	}
-
-	if(backups !== null) {
-		querydata.backups = backups;
-	}
-
-	if(ipv6 !== null) {
-		querydata.ipv6 = ipv6;
-	}
-
-	if(private_networking !== null) {
-		querydata.private_networking = private_networking;
-	}
-
-	if(user_data !== null) {
-		querydata.user_data = user_data;
-	}
-
-	querydata = {
-		name				: 	name,
-		region				: 	region,
-		size				: 	size,
-		image				: 	image
-	}
-
-	makeRequest(rest.post, this.baseUri + 'droplets', {data: querydata, headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
+DO.prototype.createDroplet = function(data) {
+	makeRequest(rest.post, this.baseUri + 'droplets', {data: data, headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
 };
 
 /**
@@ -85,7 +56,7 @@ DO.prototype.createDroplet = function(name, region, size, image, ssh_keys, backu
  * @param id {number} [Required]
  *
  * @The response will be a JSON object with a key called droplet. This will be set to a JSON object that contains the Droplet's attributes:
- * 
+ *
  * Api documentation: https://developers.digitalocean.com/v2/#retrieve-an-existing-droplet-by-id
  */
 
@@ -97,7 +68,7 @@ DO.prototype.getDropletById = function(dropletID, callback) {
  * List all Droplets in your account
  *
  * @The response body will be a JSON object with a key of droplets. This will be set to an array containing objects representing each Droplet.
- * 
+ *
  * Api documentation: https://developers.digitalocean.com/v2/#list-all-droplets
  */
 
@@ -120,7 +91,7 @@ DO.prototype.deleteDroplet = function(dropletID, callback) {
 
 /*
 	List all available Kernels for a Droplet
-	
+
 	Retrieve a list of all kernels available to a Dropet
 
 	@param id {number} [Required]
@@ -136,12 +107,12 @@ DO.prototype.availableKernelsForDroplet = function(dropletID, callback) {
 
 /*
 	Retrieve snapshots for a Droplet
-	
+
 	Retrieve the snapshots that have been created from a Droplet
 
 	@param id {number} [Required]
 
-	@ You will get back a JSON object that has a snapshots key. 
+	@ You will get back a JSON object that has a snapshots key.
 	  This will be set to an array of snapshot objects, each of which contain the standard image attributes
 
 	API documentation: https://developers.digitalocean.com/#retrieve-snapshots-for-a-droplet
@@ -151,7 +122,7 @@ DO.prototype.getSnapshotsForDroplet = function(dropletID, callback) {
 	makeRequest(rest.get, this.baseUri + 'droplets/' + dropletID + '/snapshots', {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
 };
 
-/*	
+/*
 	Retrieve backups for a Droplet
 
 	Retrieve any backups associated with a Droplet
@@ -168,7 +139,7 @@ DO.prototype.getBackupsForDroplet = function(dropletID, callback) {
 	makeRequest(rest.get, this.baseUri + 'droplets/' + dropletID + '/backups', {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
 };
 
-/*	
+/*
 	Retrieve actions for a Droplet
 
 	Retrieve all actions that have been executed on a Droplet
@@ -185,7 +156,7 @@ DO.prototype.getActionsForDroplet = function(dropletID, callback) {
 	makeRequest(rest.get, this.baseUri + 'droplets/' + dropletID + '/actions', {headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token}}, callback);
 };
 
-/*	
+/*
 	List Droplet Upgrades
 
 	Retrieve a list of droplets that are scheduled to be upgraded

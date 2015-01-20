@@ -7,4 +7,5 @@ var _ = require('lodash');
 /** Extend the DropletAPi **/
 module.exports = _.extend(
 	require('./lib/digitalocean.droplets');
+	require('./lib/digitalocean.account');
 );

@@ -278,6 +278,29 @@ digitalocean.listAllActions({page: 1, per_page:1},function (error, result) {
 
 ```
 
+### listAllActions(pageData, callback)
+
+List all of the actions that have been executed on the current account
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi').Actions;
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+digitalocean.getActionById(YOUR ACTIONS ID, function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+
 TODO
 ----
 * Keep on adding more actions from the DigitalOcean API v2

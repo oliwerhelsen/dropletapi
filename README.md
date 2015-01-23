@@ -30,6 +30,10 @@ Features
 * Retrieve backups for a Droplet
 * Retrieve actions for a Droplet
 
+-- Actions
+* List all Actions
+* Retrieve an existing Action
+
 API
 ---
 
@@ -41,11 +45,23 @@ Example usage
 -------------
 
 ```javascript
-var DIGITALOCEAN = require('dropletapi');
+var DIGITALOCEAN = require('dropletapi').Droplets;
 
 var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
 
-digitalocean.createDroplet('testingAPI', 'nyc3', '512mb', 'ubuntu-14-04-x64', null, false, true, null, null, function (error, result) {
+var myNewDropletData = {
+  "name": "example.com",
+  "region": "nyc3",
+  "size": "512mb",
+  "image": "ubuntu-14-04-x64",
+  "ssh_keys": null,
+  "backups": false,
+  "ipv6": true,
+  "user_data": null,
+  "private_networking": null
+}
+
+digitalocean.createDroplet(myNewDropletData, function (error, result) {
           if (error) {
               console.log(error);
           }
@@ -64,7 +80,7 @@ Example usage
 -------------
 
 ```javascript
-var DIGITALOCEAN = require('dropletapi');
+var DIGITALOCEAN = require('dropletapi').Droplets;
 
 var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
 
@@ -79,7 +95,7 @@ digitalocean.getDropletById(PUT THE DROPLETID HERE, function (error, result) {
 
 ```
 
-### listDroplets(callback) 
+### listDroplets(callback)
 
 List all Droplets in your account
 
@@ -87,7 +103,7 @@ Example usage
 -------------
 
 ```javascript
-var DIGITALOCEAN = require('dropletapi');
+var DIGITALOCEAN = require('dropletapi').Droplets;
 
 var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
 
@@ -110,7 +126,7 @@ Example usage
 -------------
 
 ```javascript
-var DIGITALOCEAN = require('dropletapi');
+var DIGITALOCEAN = require('dropletapi').Droplets;
 
 var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
 
@@ -133,7 +149,7 @@ Example usage
 -------------
 
 ```javascript
-var DIGITALOCEAN = require('dropletapi');
+var DIGITALOCEAN = require('dropletapi').Droplets;
 
 var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
 
@@ -156,7 +172,7 @@ Example usage
 -------------
 
 ```javascript
-var DIGITALOCEAN = require('dropletapi');
+var DIGITALOCEAN = require('dropletapi').Droplets;
 
 var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
 
@@ -179,7 +195,7 @@ Example usage
 -------------
 
 ```javascript
-var DIGITALOCEAN = require('dropletapi');
+var DIGITALOCEAN = require('dropletapi').Droplets;
 
 var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
 
@@ -202,7 +218,7 @@ Example usage
 -------------
 
 ```javascript
-var DIGITALOCEAN = require('dropletapi');
+var DIGITALOCEAN = require('dropletapi').Droplets;
 
 var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
 
@@ -225,11 +241,56 @@ Example usage
 -------------
 
 ```javascript
-var DIGITALOCEAN = require('dropletapi');
+var DIGITALOCEAN = require('dropletapi').Droplets;
 
 var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
 
 digitalocean.listDropletUpgrades(function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+### listAllActions(pageData, callback)
+
+List all of the actions that have been executed on the current account
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi').Actions;
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+digitalocean.listAllActions({page: 1, per_page:1},function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+
+### listAllActions(pageData, callback)
+
+List all of the actions that have been executed on the current account
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi').Actions;
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+digitalocean.getActionById(YOUR ACTIONS ID, function (error, result) {
           if (error) {
               console.log(error);
           }

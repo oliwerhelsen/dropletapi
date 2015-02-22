@@ -34,6 +34,10 @@ Features
 * List all Actions
 * Retrieve an existing Action
 
+-- Domains
+* List all Domains
+* Create a new Domain
+
 API
 ---
 
@@ -291,6 +295,103 @@ var DIGITALOCEAN = require('dropletapi').Actions;
 var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
 
 digitalocean.getActionById(YOUR ACTIONS ID, function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+### listDomains(callback)
+
+List all of the domains in your account
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi').Domains;
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+digitalocean.listDomains(function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+### createDomain(data, callback)
+
+Create a new domain for your Droplet
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi').Domains;
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+var data = {
+  "name": "digitaloceanisthebombdiggity.com",
+  "ip_address": "1.2.3.4"
+};
+
+digitalocean.createDomain(data, function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+### getDomainByName(domainName, callback)
+
+Create a new domain for your Droplet
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi').Domains;
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+var domainName = 'digitaloceanisthebombdiggity.com';
+
+digitalocean.getDomainByName(domainName, function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+### deleteDomain(domainName, callback)
+
+Create a new domain for your Droplet
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi').Domains;
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+var domainName = 'digitaloceanisthebombdiggity.com';
+
+digitalocean.deleteDomain(domainName, function (error, result) {
           if (error) {
               console.log(error);
           }

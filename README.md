@@ -38,6 +38,9 @@ Features
 * List all Domains
 * Create a new Domain
 
+-- Account
+* Get User Information
+
 API
 ---
 
@@ -392,6 +395,28 @@ var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
 var domainName = 'digitaloceanisthebombdiggity.com';
 
 digitalocean.deleteDomain(domainName, function (error, result) {
+          if (error) {
+              console.log(error);
+          }
+          else {
+              console.log(result);
+          }
+      });
+
+```
+### getUserInfo(callback)
+
+Get user information
+
+Example usage
+-------------
+
+```javascript
+var DIGITALOCEAN = require('dropletapi').Domains;
+
+var digitalocean = new DIGITALOCEAN('Your API-TOKEN');
+
+digitalocean.getUserInfo(function (error, result) {
           if (error) {
               console.log(error);
           }
